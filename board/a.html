@@ -73,7 +73,7 @@
                     </div>
                 </div>
                 <div class="form-row file-row">
-                    <label for="threadFile" class="file-label">📁 Прикрепить файл</label>
+                    <label id="123123">📁 Прикрепить файл</label>
                     <input type="file" id="threadFile" accept="image/png,image/jpeg,image/gif,image/webp">
                     <span class="file-name" id="fileChosen">Файл не выбран</span>
                     <button type="submit" id="submitThread" class="german-btn">Создать тред</button>
@@ -98,6 +98,19 @@
     </div>
 
     <script>
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxnt6lyzoIxZxQ8cvRpDJgQH9GZGzkbrEMtizIjNQz5ni9kBzUiQi5ahU2O_3-6EnQjtg/exec";
+
+    window.handleGalleryData = function(data) {
+        const galleryDiv = document.getElementById('gallery');
+            
+        if (!data || data.length === 0) {
+            galleryDiv.innerHTML = "<p style='color:#777;'>Галерея пуста. Загрузите сюда первое изображение!</p>";
+            return;
+        }
+     const fddlfs = document.getElementById('123123')
+    fddlfs.onclick=function(){
+        //todo
+    }
     window.CURRENT_BOARD = 'a'; // Change for each board: 'a', 'b', 'g', 'pol', 'd', 'k'
 </script>
     <script src="../scripts/script.js"></script>
