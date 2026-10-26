@@ -2,34 +2,73 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Мой Хостинг Изображений и Галерея</title>
+    <title> Хостинг Изображений</title>
 </head>
 <body>
 
-    <h2>Загрузить новую картинку</h2>
+    <h2>Загрузить картинку</h2>
     <div class="box">
         <input type="file" id="imageInput" accept="image/*">
-        <br><br>
-        <button onclick="uploadImage()" style="padding: 10px 20px; cursor: pointer;">Загрузить на хостинг</button>
+        <br>
+        <button onclick="uploadImage()">Загрузить на хостинг</button>
         <div id="status"></div>
     </div>
 
-    <h2>Все изображения в галерее</h2>
-    <div class="gallery" id="gallery">Загрузка галереи...</div>
+    <h2>Галерея изображений</h2>
+    <div class="gallery" id="gallery">Синхронизация с таблицей...</div>
 
     <script>
-        const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyScHKdj31XWr6CDWyn6dvFQA5mybXZrwTATdldsOTmmsZ_Kdiiof5ZiYrkkw_MQ8SBhg/exec";
+        // ВСТАВЬТЕ СЮДА ВАШУ ССЫЛКУ ИЗ GOOGLE APPS SCRIPT (ОБЯЗАТЕЛЬНО С /exec НА КОНЦЕ)
+        const WEB_APP_URL = "https://google.com";
 
+        // Обработчик получения данных (JSONP)
+        window.handleGalleryData = function(data) {
+            const galleryDiv = document.getElementById('gallery');
+            
+            if (!data || data.length === 0) {
+                galleryDiv.innerHTML = "<p style='color:#777;'>Галерея пуста. Загрузите сюда первое изображение!</p>";
+                return;
+            }
+            
+            galleryDiv.innerHTML = data.map(img => `
+                <div class="gallery-item">
+                    <a href="${img.url}" target="_blank">
+                        <img src="${img.url}" alt="${img.name}" loading="lazy">
+                    </a>
+                    <p title="${img.name}">${img.name}</p>
+                </div>
+            `).join('');
+            
+            const oldScript = document.getElementById('jsonp-script');
+            if (oldScript) oldScript.remove();
+        };
+
+        // Запрос списка картинок из таблицы
+        function loadGallery() {
+            const galleryDiv = document.getElementById('gallery');
+            const oldScript = document.getElementById('jsonp-script');
+            if (oldScript) oldScript.remove();
+
+            const script = document.createElement('script');
+            script.id = 'jsonp-script';
+            script.src = `${WEB_APP_URL}?callback=window.handleGalleryData&_=` + new Date().getTime(); 
+            script.onerror = function() {
+                galleryDiv.innerHTML = "<p style='color:red;'>Ошибка доступа к таблице. Проверьте WEB_APP_URL.</p>";
+            };
+            document.body.appendChild(script);
+        }
+
+        // Загрузка картинки в таблицу
         function uploadImage() {
             const input = document.getElementById('imageInput');
             const statusDiv = document.getElementById('status');
             
             if (input.files.length === 0) {
-                alert('Пожалуйста, выберите файл!');
+                alert('Выберите файл!');
                 return;
             }
 
-            statusDiv.innerHTML = "Загрузка файла...";
+            statusDiv.innerHTML = "<span style='color:#666;'>Конвертация и отправка...</span>";
             const file = input.files[0];
             const reader = new FileReader();
 
@@ -43,54 +82,19 @@
                     body: JSON.stringify({ file: base64Data, name: file.name })
                 })
                 .then(() => {
-                    statusDiv.innerHTML = "<span style='color:green;'>Успешно отправлено! Обновите страницу через 3 секунды.</span>";
+                    statusDiv.innerHTML = "<span style='color:green;'>Успешно загружено! Галерея обновится...</span>";
                     input.value = '';
-                    setTimeout(loadGallery, 3000);
+                    setTimeout(loadGallery, 2500); // Перезагружаем галерею через 2.5 секунды
                 })
                 .catch(err => {
-                    statusDiv.innerHTML = "<span style='color:red;'>Ошибка загрузки</span>";
+                    statusDiv.innerHTML = "<span style='color:red;'>Ошибка при отправке запроса.</span>";
                     console.error(err);
                 });
             };
             reader.readAsDataURL(file);
         }
 
-        function loadGallery() {
-            const galleryDiv = document.getElementById('gallery');
-            
-            fetch(WEB_APP_URL, {
-                method: 'GET',
-                mode: 'cors',
-                credentials: 'omit'
-            })
-            .then(response => {
-                if (!response.ok) throw new Error('Сеть ответила с ошибкой');
-                return response.text(); 
-            })
-            .then(text => {
-                const data = JSON.parse(text); 
-                
-                if (!data || data.length === 0) {
-                    galleryDiv.innerHTML = "<p>Галерея пока пуста. Загрузите первое изображение!</p>";
-                    return;
-                }
-                
-                galleryDiv.innerHTML = data.map(img => `
-                    <div class="gallery-item">
-                        <a href="${img.url}" target="_blank">
-                            <img src="${img.url}" alt="${img.name}" loading="lazy" onerror="this.src='https://placehold.co'">
-                        </a>
-                        <p title="${img.name}">${img.name}</p>
-                    </div>
-                `).join('');
-            })
-            .catch(err => {
-                galleryDiv.innerHTML = "<p style='color:red;'>Не удалось загрузить галерею. Проверьте консоль.</p>";
-                console.error("Ошибка GET запроса:", err);
-            });
-        }
-
-
+        // Автозапуск при загрузке страницы
         window.onload = loadGallery;
     </script>
 </body>
