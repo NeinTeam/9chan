@@ -447,10 +447,7 @@
     initCaptcha();
     loadFromSheets();
     setInterval(refreshWithState, 15000);
-        
-    initCaptcha();
-    loadFromSheets();
-    setInterval(refreshWithState, 15000);
+    
     (function addMetaScript() {
         if (!document.querySelector('script[src*="meta.js"]')) {
             const metaScript = document.createElement('script');
@@ -461,4 +458,13 @@
             document.head.appendChild(metaScript);
         }
     })();
+})();
+
+// 1 апреля — рофл-стиль
+(function loadAprilFools() {
+    if (!document.querySelector('script[src*="aprilfools.js"]')) {
+        const script = document.createElement('script');
+        script.src = '../scripts/aprilfools.js';
+        document.head.appendChild(script);
+    }
 })();
