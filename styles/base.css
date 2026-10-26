@@ -4,6 +4,8 @@ body{background:#eef2ff;font-family:'Helvetica Neue',Arial,sans-serif;font-size:
 .board-header{background:#af0a0a;padding:8px 15px;border-bottom:2px solid #800;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center}
 .logo-area{display:flex;align-items:center;gap:10px}
 .hitme-icon{width:32px;height:32px;border-radius:4px}
+body{cursor: url('main.png'), auto;}
+.special-button {cursor: url('selection.png'), pointer;}
 h1{font-size:1.5rem;color:#fff;font-weight:bold}
 .mascot-placeholder{width:32px;height:32px;background:#fff;border-radius:4px;border:1px solid #800}
 .header-links{display:flex;gap:15px}
