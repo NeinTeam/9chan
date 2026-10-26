@@ -1,51 +1,657 @@
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:#eef2ff;font-family:'Helvetica Neue',Arial,sans-serif;font-size:13px;color:#000;padding:10px}
-.container{max-width:1200px;margin:0 auto;background:#fff;border:1px solid #d9bfb7}
-.board-header{background:#af0a0a;padding:8px 15px;border-bottom:2px solid #800;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center}
-.logo-area{display:flex;align-items:center;gap:10px}
-.hitme-icon{width:32px;height:32px;border-radius:4px}
-body{cursor: url('main.png'), auto;}
-.special-button {cursor: url('selection.png'), pointer;}
-h1{font-size:1.5rem;color:#fff;font-weight:bold}
-.mascot-placeholder{width:32px;height:32px;background:#fff;border-radius:4px;border:1px solid #800}
-.header-links{display:flex;gap:15px}
-.header-links a{color:#fff;text-decoration:none;font-size:12px}
-.header-links a:hover{text-decoration:underline}
-.sync-status-bar{background:#800;padding:2px 10px;border-radius:4px}
-.sync-status{font-size:11px;color:#ffd700}
-.banner-deutsch{background:#fff;text-align:center;padding:5px;font-size:11px;color:#800;border-bottom:1px solid #d9bfb7}
-.board-nav{background:#f0f0f0;padding:8px 15px;border-bottom:1px solid #d9bfb7}
-.board-label{color:#800;font-weight:bold;margin-right:10px}
-.boards-list{display:inline-flex;flex-wrap:wrap;list-style:none;gap:8px}
-.boards-list li a{color:#00e;text-decoration:none;font-size:12px}
-.boards-list li a:hover{color:#f00}
-.thread-form-container{background:#f0f0f0;margin:15px;padding:15px;border:1px solid #d9bfb7}
-.form-row{margin-bottom:12px;display:flex;flex-wrap:wrap;gap:10px}
-#threadSubject,#threadName{flex:1;background:#fff;border:1px solid #d9bfb7;padding:8px;font-size:12px;font-family:monospace}
-#threadComment{width:100%;background:#fff;border:1px solid #d9bfb7;padding:8px;font-family:monospace;height:80px}
-.file-label{background:#eee;padding:5px 12px;border:1px solid #d9bfb7;border-radius:3px;cursor:pointer;font-size:12px}
-#threadFile{display:none}
-.file-name{background:#fff;padding:5px 10px;border:1px solid #d9bfb7;font-size:11px}
-.german-btn{background:#eee;border:1px solid #d9bfb7;padding:5px 15px;cursor:pointer;font-size:12px}
-.german-btn:hover{background:#ddd}
-.board-stats{background:#f0f0f0;margin:10px 15px;padding:5px 15px;font-size:11px;color:#666}
-.threads-container{margin:0 15px 20px}
-.thread-card{background:#faf0e6;border:1px solid #d9bfb7;margin-bottom:15px;padding:12px}
-.thread-header{display:flex;justify-content:space-between;border-bottom:1px solid #d9bfb7;padding-bottom:5px;margin-bottom:10px}
-.thread-title{font-weight:bold;color:#800}
-.thread-info{color:#789922;font-size:11px}
-.thread-image{max-width:200px;margin:10px 0;border:1px solid #d9bfb7}
-.thread-comment{background:#fff;padding:10px;border:1px solid #d9bfb7;white-space:pre-wrap;font-family:monospace;font-size:12px}
-.reply-button{background:#eee;border:1px solid #d9bfb7;padding:3px 10px;margin-top:10px;cursor:pointer;font-size:11px}
-.replies-container{margin-top:12px;padding-left:20px;border-left:2px solid #d9bfb7}
-.reply-item{background:#fff;margin-top:10px;padding:8px;border:1px solid #e0d3c5}
-.board-footer{background:#f0f0f0;border-top:1px solid #d9bfb7;padding:12px;text-align:center;font-size:10px;color:#666}
-.footer-content{display:flex;align-items:center;justify-content:center;gap:10px}
-.footer-icon{width:20px;height:20px}
-.loading-message{text-align:center;padding:40px;color:#789922}
-.captcha-container{display:flex;gap:10px;align-items:center;background:#fff;padding:8px;border:1px solid #d9bfb7}
-.captcha-question{background:#eee;padding:5px 12px;font-family:monospace;font-weight:bold;color:#800}
-.captcha-input{background:#fff;border:1px solid #d9bfb7;padding:5px;width:80px}
-body{cursor: url('main.png'), auto;}
-.special-button {cursor: url('selection.png'), pointer;}
+/* ============================================
+   9chan — Updated Style (based on previous)
+   ============================================ */
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #eef2ff 0%, #e4e9ff 100%);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 13px;
+    color: #1a1a1a;
+    padding: 12px;
+    min-height: 100vh;
+    cursor: url('main.png'), auto;
+}
+
+.special-button {
+    cursor: url('selection.png'), pointer;
+}
+
+/* ============================================
+   Контейнер
+   ============================================ */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: #fff;
+    border: 1px solid #d9bfb7;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 6px 24px rgba(128, 0, 0, 0.08);
+}
+
+/* ============================================
+   Шапка
+   ============================================ */
+.board-header {
+    background: linear-gradient(135deg, #af0a0a 0%, #800 100%);
+    padding: 10px 18px;
+    border-bottom: 2px solid #600;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.hitme-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.2s;
+}
+
+.hitme-icon:hover {
+    transform: scale(1.1);
+}
+
+h1 {
+    font-size: 1.5rem;
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.mascot-placeholder {
+    width: 36px;
+    height: 36px;
+    background: #fff;
+    border-radius: 6px;
+    border: 1px solid #800;
+    overflow: hidden;
+}
+
+.header-links {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.header-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+.header-links a:hover {
+    background: rgba(255, 255, 255, 0.15);
+    text-decoration: none;
+}
+
+.sync-status-bar {
+    background: rgba(0, 0, 0, 0.25);
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sync-status {
+    font-size: 11px;
+    color: #ffd700;
+    font-weight: 500;
+}
+
+/* ============================================
+   Баннер
+   ============================================ */
+.banner-deutsch {
+    background: #fff;
+    text-align: center;
+    padding: 0;
+    font-size: 11px;
+    color: #800;
+    border-bottom: 1px solid #d9bfb7;
+}
+
+.banner-deutsch img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+}
+
+/* ============================================
+   Навигация
+   ============================================ */
+.board-nav {
+    background: #f8f5f0;
+    padding: 10px 18px;
+    border-bottom: 1px solid #e8ddd0;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.board-label {
+    color: #800;
+    font-weight: 700;
+    margin-right: 8px;
+    font-size: 12px;
+}
+
+.boards-list {
+    display: inline-flex;
+    flex-wrap: wrap;
+    list-style: none;
+    gap: 6px;
+}
+
+.boards-list li a {
+    color: #00e;
+    text-decoration: none;
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    transition: all 0.15s;
+}
+
+.boards-list li a:hover {
+    color: #fff;
+    background: #af0a0a;
+}
+
+/* ============================================
+   Форма создания треда
+   ============================================ */
+.thread-form-container {
+    background: #f8f5f0;
+    margin: 18px;
+    padding: 18px;
+    border: 1px solid #e8ddd0;
+    border-radius: 10px;
+}
+
+.form-row {
+    margin-bottom: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+#threadSubject,
+#threadName {
+    flex: 1;
+    min-width: 150px;
+    background: #fff;
+    border: 1px solid #d9bfb7;
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    font-family: 'Courier New', monospace;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#threadSubject:focus,
+#threadName:focus,
+#threadComment:focus {
+    outline: none;
+    border-color: #af0a0a;
+    box-shadow: 0 0 0 3px rgba(175, 10, 10, 0.1);
+}
+
+#threadComment {
+    width: 100%;
+    background: #fff;
+    border: 1px solid #d9bfb7;
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    height: 90px;
+    resize: vertical;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.file-label {
+    background: #eee;
+    padding: 6px 14px;
+    border: 1px solid #d9bfb7;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background 0.2s;
+    display: inline-block;
+}
+
+.file-label:hover {
+    background: #e0e0e0;
+}
+
+#threadFile {
+    display: none;
+}
+
+.file-name {
+    background: #fff;
+    padding: 6px 12px;
+    border: 1px solid #d9bfb7;
+    border-radius: 6px;
+    font-size: 11px;
+    color: #666;
+    display: inline-block;
+}
+
+.german-btn {
+    background: linear-gradient(135deg, #af0a0a, #800);
+    color: #fff;
+    border: none;
+    padding: 8px 20px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 6px;
+    transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.german-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(175, 10, 10, 0.3);
+}
+
+.german-btn:active {
+    transform: translateY(0);
+}
+
+.german-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* ============================================
+   Капча
+   ============================================ */
+.captcha-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    background: #fff;
+    padding: 10px 14px;
+    border: 1px solid #d9bfb7;
+    border-radius: 6px;
+    flex-wrap: wrap;
+}
+
+.captcha-question {
+    background: #f0e6d2;
+    padding: 6px 14px;
+    font-family: 'Courier New', monospace;
+    font-weight: 700;
+    color: #800;
+    border-radius: 4px;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.captcha-input {
+    background: #fff;
+    border: 1px solid #d9bfb7;
+    border-radius: 4px;
+    padding: 6px 10px;
+    width: 90px;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+}
+
+.captcha-input:focus {
+    outline: none;
+    border-color: #af0a0a;
+    box-shadow: 0 0 0 3px rgba(175, 10, 10, 0.1);
+}
+
+/* ============================================
+   Статистика
+   ============================================ */
+.board-stats {
+    background: #f8f5f0;
+    margin: 0 18px 15px;
+    padding: 8px 18px;
+    font-size: 11px;
+    color: #666;
+    border: 1px solid #e8ddd0;
+    border-radius: 6px;
+    display: inline-block;
+}
+
+/* ============================================
+   Треды
+   ============================================ */
+.threads-container {
+    margin: 0 18px 25px;
+}
+
+.thread-card {
+    background: #faf0e6;
+    border: 1px solid #e8ddd0;
+    border-radius: 10px;
+    margin-bottom: 18px;
+    padding: 15px;
+    transition: box-shadow 0.2s, transform 0.15s;
+}
+
+.thread-card:hover {
+    box-shadow: 0 4px 16px rgba(128, 0, 0, 0.08);
+    transform: translateY(-1px);
+}
+
+.thread-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1px solid #e8ddd0;
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.thread-title {
+    font-weight: 700;
+    color: #800;
+    font-size: 14px;
+}
+
+.thread-info {
+    color: #789922;
+    font-size: 11px;
+}
+
+.thread-image {
+    max-width: 220px;
+    margin: 12px 0;
+    border: 1px solid #d9bfb7;
+    border-radius: 6px;
+    display: block;
+}
+
+.thread-comment {
+    background: #fff;
+    padding: 12px;
+    border: 1px solid #e8ddd0;
+    border-radius: 6px;
+    white-space: pre-wrap;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.reply-button,
+.reply-btn {
+    background: #eee;
+    border: 1px solid #d9bfb7;
+    padding: 5px 14px;
+    margin-top: 12px;
+    cursor: pointer;
+    font-size: 11px;
+    border-radius: 6px;
+    transition: background 0.2s;
+}
+
+.reply-button:hover,
+.reply-btn:hover {
+    background: #ddd;
+}
+
+/* ============================================
+   Ответы
+   ============================================ */
+.replies-container,
+.replies {
+    margin-top: 14px;
+    padding-left: 22px;
+    border-left: 3px solid #e8ddd0;
+}
+
+.reply-item,
+.reply {
+    background: #fff;
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #e8ddd0;
+    border-radius: 6px;
+    transition: background 0.2s;
+}
+
+.reply-item:hover,
+.reply:hover {
+    background: #fdfbf7;
+}
+
+.reply-item strong,
+.reply strong {
+    color: #800;
+    font-weight: 700;
+}
+
+/* ============================================
+   Форма ответа
+   ============================================ */
+.reply-form {
+    margin-top: 12px;
+    padding: 12px;
+    background: #f8f5f0;
+    border: 1px solid #e8ddd0;
+    border-radius: 8px;
+}
+
+.reply-form input[type="text"],
+.reply-form textarea {
+    width: 100%;
+    margin-bottom: 8px;
+    padding: 8px 10px;
+    border: 1px solid #d9bfb7;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 12px;
+    background: #fff;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.reply-form input[type="text"]:focus,
+.reply-form textarea:focus {
+    outline: none;
+    border-color: #af0a0a;
+    box-shadow: 0 0 0 3px rgba(175, 10, 10, 0.1);
+}
+
+.reply-form textarea {
+    resize: vertical;
+    min-height: 60px;
+}
+
+.submit-reply {
+    background: linear-gradient(135deg, #d4af37, #b8960f);
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 6px;
+    color: #000;
+    transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.submit-reply:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
+}
+
+.submit-reply:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.cancel-reply {
+    background: #ccc;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 12px;
+    border-radius: 6px;
+    color: #333;
+    transition: background 0.2s;
+}
+
+.cancel-reply:hover {
+    background: #bbb;
+}
+
+/* ============================================
+   Подвал
+   ============================================ */
+.board-footer {
+    background: #f8f5f0;
+    border-top: 1px solid #e8ddd0;
+    padding: 15px;
+    text-align: center;
+    font-size: 10px;
+    color: #666;
+}
+
+.footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.footer-icon {
+    width: 22px;
+    height: 22px;
+    border-radius: 4px;
+}
+
+/* ============================================
+   Служебные
+   ============================================ */
+.loading-message {
+    text-align: center;
+    padding: 40px;
+    color: #789922;
+    font-style: italic;
+}
+
+/* ============================================
+   Скроллбар
+   ============================================ */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f0e6d2;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #af0a0a;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #800;
+}
+
+/* ============================================
+   Адаптив
+   ============================================ */
+@media (max-width: 640px) {
+    body {
+        padding: 6px;
+    }
+    
+    .container {
+        border-radius: 0;
+    }
+    
+    h1 {
+        font-size: 1.2rem;
+    }
+    
+    .header-links {
+        gap: 8px;
+        font-size: 11px;
+    }
+    
+    .thread-form-container {
+        margin: 12px;
+        padding: 12px;
+    }
+    
+    .form-row {
+        flex-direction: column;
+    }
+    
+    #threadSubject,
+    #threadName {
+        width: 100%;
+    }
+    
+    .thread-image {
+        max-width: 100%;
+    }
+    
+    .reply-form {
+        padding: 10px;
+    }
+    
+    .submit-reply,
+    .cancel-reply {
+        width: 100%;
+        margin-bottom: 6px;
+    }
+    
+    .boards-list {
+        gap: 4px;
+    }
+    
+    .boards-list li a {
+        padding: 3px 6px;
+        font-size: 11px;
+    }
+    
+    .captcha-container {
+        flex-wrap: wrap;
+    }
+    
+    .captcha-input {
+        width: 100%;
+    }
+    
+    .threads-container {
+        margin: 0 12px 20px;
+    }
+    
+    .board-stats {
+        margin: 0 12px 12px;
+    }
+}
