@@ -28,9 +28,8 @@
 - HTML5
 - CSS3
 - JavaScript
-- GitHub Gist API (нет)
 - Google sheets
 
 ## Ссылка
 
-[https://rasko6.github.io/9chan/](https://rasko6.github.io/9chan/)
+[https://neinteam.github.io/9chan/](https://neinteam.github.io/9chan/)
