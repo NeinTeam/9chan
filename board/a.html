@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>/a/ - 9chan</title>
+    <link rel="icon" href="../icon.png" type="image/png">
+    <link rel="stylesheet" href="../styles/base.css">
+    <link rel="stylesheet" href="../styles/base-phone.css">
+    <style>
+        .banner-deutsch {
+            background: #FFF200;
+            padding: 0;
+            margin-top: 12px;
+            text-align: center;
+        }
+        .banner-deutsch img {
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="board-header">
+            <div class="logo-area">
+                <img src="../icon.png" alt="9chan" class="hitme-icon" onerror="this.src='../hitme.png'">
+                <h1>/a/ - Аниме</h1>
+                <div class="mascot-placeholder">
+                    <img src="../icon.png" alt="mascot" style="width:48px;height:48px;object-fit:contain;border-radius:50%;" onerror="this.src='../hitme.png'">
+                </div>
+            </div>
+            <div class="header-links">
+                <a href="../index.html">Главная</a>
+                <a href="cat.html">Каталог</a>
+                <a href="rules.html">Правила</a>
+                <a href="help.html">Помощь</a>
+            </div>
+            <div class="sync-status-bar">
+                <span id="syncStatusText" class="sync-status">🔄 Загрузка...</span>
+            </div>
+            <div class="auth-container" id="authContainer"></div>
+            <div class="banner-deutsch">
+                <img src="../a.png" alt="a board banner">
+            </div>
+        </header>
+
+        <nav class="board-nav">
+            <span class="board-label">Доски:</span>
+            <ul class="boards-list">
+                <li><a href="b.html">/b/</a></li>
+                <li><a href="g.html">/g/</a></li>
+                <li><a href="a.html">/a/</a></li>
+                <li><a href="pol.html">/pol/</a></li>
+                <li><a href="d.html">/d/</a></li>
+                <li><a href="k.html">/k/</a></li>
+            </ul>
+        </nav>
+
+        <div class="thread-form-container">
+            <form id="newThreadForm" enctype="multipart/form-data">
+                <div class="form-row">
+                    <input type="text" id="threadSubject" placeholder="Тема (необязательно)" maxlength="100">
+                    <input type="text" id="threadName" placeholder="Имя (опционально)" maxlength="50">
+                </div>
+                <div class="form-row">
+                    <textarea id="threadComment" rows="3" placeholder="Комментарий..." required></textarea>
+                </div>
+                <div class="form-row captcha-row">
+                    <div class="captcha-container">
+                        <span id="captchaQuestion" class="captcha-question"></span>
+                        <input type="text" id="captchaAnswer" placeholder="Ответ" class="captcha-input">
+                    </div>
+                </div>
+                <div class="form-row file-row">
+                    <label for="threadFile" class="file-label">📁 Прикрепить файл</label>
+                    <input type="file" id="threadFile" accept="image/png,image/jpeg,image/gif,image/webp">
+                    <span class="file-name" id="fileChosen">Файл не выбран</span>
+                    <button type="submit" id="submitThread" class="german-btn">Создать тред</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="board-stats">
+            <span>🔥 Тредов: <span id="threadCount">0</span></span>
+        </div>
+
+        <div class="threads-container" id="threadsContainer">
+            <div class="loading-message">Загрузка...</div>
+        </div>
+
+        <footer class="board-footer">
+            <div class="footer-content">
+                <span>© 9chan — свобода слова, чёрный юмор, немецкое качество</span>
+                <img src="../icon.png" alt="footer-icon" class="footer-icon" onerror="this.src='../hitme.png'">
+            </div>
+        </footer>
+    </div>
+
+    <script>
+    window.CURRENT_BOARD = 'a'; // Change for each board: 'a', 'b', 'g', 'pol', 'd', 'k'
+</script>
+    <script src="../scripts/script.js"></script>
+    <script>const CURRENT_BOARD = 'a';</script>
+</body>
+</html>

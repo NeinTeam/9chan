@@ -1,0 +1,20 @@
+@media(max-width:780px){
+body{padding:5px}
+.board-header{flex-direction:column;text-align:center}
+.logo-area{justify-content:center}
+.header-links{justify-content:center;flex-wrap:wrap}
+.board-nav{text-align:center}
+.boards-list{justify-content:center}
+.thread-form-container{margin:10px;padding:10px}
+.form-row{flex-direction:column}
+.file-row{align-items:stretch}
+.file-label{text-align:center}
+.german-btn{width:100%}
+.board-stats{margin:10px}
+.threads-container{margin:0 10px 15px}
+.thread-image{max-width:100%}
+.thread-header{flex-direction:column}
+.replies-container{padding-left:10px}
+.captcha-container{flex-direction:column}
+.captcha-input{width:auto}
+}
