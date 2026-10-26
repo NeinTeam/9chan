@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Мой Хостинг Изображений и Галерея</title>
+</head>
+<body>
+
+    <h2>Загрузить новую картинку</h2>
+    <div class="box">
+        <input type="file" id="imageInput" accept="image/*">
+        <br><br>
+        <button onclick="uploadImage()" style="padding: 10px 20px; cursor: pointer;">Загрузить на хостинг</button>
+        <div id="status"></div>
+    </div>
+
+    <h2>Все изображения в галерее</h2>
+    <div class="gallery" id="gallery">Загрузка галереи...</div>
+
+    <script>
+        const WEB_APP_URL = "https://google.com";
+
+        function uploadImage() {
+            const input = document.getElementById('imageInput');
+            const statusDiv = document.getElementById('status');
+            
+            if (input.files.length === 0) {
+                alert('Пожалуйста, выберите файл!');
+                return;
+            }
+
+            statusDiv.innerHTML = "Загрузка файла...";
+            const file = input.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                const base64Data = e.target.result;
+                
+                fetch(WEB_APP_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ file: base64Data, name: file.name })
+                })
+                .then(() => {
+                    statusDiv.innerHTML = "<span style='color:green;'>Успешно отправлено! Обновите страницу через 3 секунды.</span>";
+                    input.value = '';
+                    setTimeout(loadGallery, 3000);
+                })
+                .catch(err => {
+                    statusDiv.innerHTML = "<span style='color:red;'>Ошибка загрузки</span>";
+                    console.error(err);
+                });
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function loadGallery() {
+            const galleryDiv = document.getElementById('gallery');
+            
+            fetch(WEB_APP_URL)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.length === 0) {
+                        galleryDiv.innerHTML = "<p>Галерея пока пуста. Загрузите первое изображение!</p>";
+                        return;
+                    }
+                    
+                    galleryDiv.innerHTML = data.map(img => `
+                        <div class="gallery-item">
+                            <a href="${img.url}" target="_blank">
+                                <img src="${img.url}" alt="${img.name}" loading="lazy">
+                            </a>
+                            <p title="${img.name}">${img.name}</p>
+                        </div>
+                    `).join('');
+                })
+                .catch(err => {
+                    galleryDiv.innerHTML = "<p style='color:red;'>Не удалось загрузить галерею. Проверьте консоль.</p>";
+                    console.error("Ошибка GET запроса:", err);
+                });
+        }
+
+        window.onload = loadGallery;
+    </script>
+</body>
+</html>
