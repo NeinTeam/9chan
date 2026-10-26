@@ -58,28 +58,38 @@
         function loadGallery() {
             const galleryDiv = document.getElementById('gallery');
             
-            fetch(WEB_APP_URL)
-                .then(response => response.json())
-                .then(data => {
-                    if (data.length === 0) {
-                        galleryDiv.innerHTML = "<p>Галерея пока пуста. Загрузите первое изображение!</p>";
-                        return;
-                    }
-                    
-                    galleryDiv.innerHTML = data.map(img => `
-                        <div class="gallery-item">
-                            <a href="${img.url}" target="_blank">
-                                <img src="${img.url}" alt="${img.name}" loading="lazy">
-                            </a>
-                            <p title="${img.name}">${img.name}</p>
-                        </div>
-                    `).join('');
-                })
-                .catch(err => {
-                    galleryDiv.innerHTML = "<p style='color:red;'>Не удалось загрузить галерею. Проверьте консоль.</p>";
-                    console.error("Ошибка GET запроса:", err);
-                });
+            fetch(WEB_APP_URL, {
+                method: 'GET',
+                mode: 'cors',
+                credentials: 'omit'
+            })
+            .then(response => {
+                if (!response.ok) throw new Error('Сеть ответила с ошибкой');
+                return response.text(); 
+            })
+            .then(text => {
+                const data = JSON.parse(text); 
+                
+                if (!data || data.length === 0) {
+                    galleryDiv.innerHTML = "<p>Галерея пока пуста. Загрузите первое изображение!</p>";
+                    return;
+                }
+                
+                galleryDiv.innerHTML = data.map(img => `
+                    <div class="gallery-item">
+                        <a href="${img.url}" target="_blank">
+                            <img src="${img.url}" alt="${img.name}" loading="lazy" onerror="this.src='https://placehold.co'">
+                        </a>
+                        <p title="${img.name}">${img.name}</p>
+                    </div>
+                `).join('');
+            })
+            .catch(err => {
+                galleryDiv.innerHTML = "<p style='color:red;'>Не удалось загрузить галерею. Проверьте консоль.</p>";
+                console.error("Ошибка GET запроса:", err);
+            });
         }
+
 
         window.onload = loadGallery;
     </script>
