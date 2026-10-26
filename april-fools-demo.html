@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎉 1 АПРЕЛЯ ДЕМО 🎉</title>
+    <style>
+        /* Базовый стиль (как у 9chan) */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Trebuchet MS', Arial, sans-serif;
+            font-size: 13px;
+            background: #eef2ff;
+            padding: 15px;
+            min-height: 100vh;
+            transition: all 0.5s;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            border: 1px solid #d9bfb7;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.5s;
+        }
+        
+        .header {
+            background: #af0a0a;
+            color: #fff;
+            padding: 15px 20px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            transition: all 0.5s;
+        }
+        
+        .content {
+            padding: 20px;
+        }
+        
+        .thread {
+            background: #faf0e6;
+            border: 1px solid #d9bfb7;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 15px;
+            transition: all 0.5s;
+        }
+        
+        .thread-title {
+            font-weight: bold;
+            color: #800;
+            font-size: 14px;
+            margin-bottom: 8px;
+            transition: all 0.5s;
+        }
+        
+        .thread-info {
+            color: #789922;
+            font-size: 11px;
+            margin-bottom: 10px;
+        }
+        
+        .thread-text {
+            background: #fff;
+            padding: 10px;
+            border: 1px solid #d9bfb7;
+            border-radius: 4px;
+            font-family: monospace;
+            transition: all 0.5s;
+        }
+        
+        button {
+            background: #eee;
+            border: 1px solid #d9bfb7;
+            padding: 8px 16px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-top: 10px;
+            transition: all 0.5s;
+        }
+        
+        .controls {
+            text-align: center;
+            padding: 20px;
+            background: #f0f0f0;
+            border-top: 1px solid #d9bfb7;
+        }
+        
+        .toggle-btn {
+            background: linear-gradient(135deg, #af0a0a, #800);
+            color: #fff;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .toggle-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(175, 10, 10, 0.4);
+        }
+        
+        /* ============================================
+           РОФЛ-СТИЛЬ 1 АПРЕЛЯ
+           ============================================ */
+        body.april {
+            background: linear-gradient(45deg, #ff00ff, #00ffff, #ffff00, #ff00ff) !important;
+            background-size: 400% 400% !important;
+            animation: rainbowBg 3s ease infinite !important;
+            font-family: 'Comic Sans MS', 'Comic Sans', cursive !important;
+        }
+        
+        @keyframes rainbowBg {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        body.april .container {
+            transform: rotate(-1deg);
+            animation: wobble 2s ease-in-out infinite;
+            border: 5px dashed #ff00ff !important;
+            border-radius: 20px !important;
+        }
+        
+        @keyframes wobble {
+            0%, 100% { transform: rotate(-1deg); }
+            50% { transform: rotate(1deg); }
+        }
+        
+        body.april .header {
+            background: linear-gradient(45deg, #ff00ff, #00ffff, #ffff00) !important;
+            animation: bounce 1s ease infinite !important;
+            text-shadow: 3px 3px 0 #ff00ff, -3px -3px 0 #00ffff !important;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        body.april .thread {
+            border: 3px dotted #ff00ff !important;
+            background: linear-gradient(135deg, #ffffcc, #ffccff) !important;
+            animation: pulse 2s ease infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+        
+        body.april .thread-title {
+            color: #ff00ff !important;
+            text-shadow: 2px 2px 0 #00ffff !important;
+        }
+        
+        body.april .thread-text {
+            font-family: 'Comic Sans MS', cursive !important;
+            color: #ff00ff !important;
+            background: #ffffcc !important;
+        }
+        
+        body.april button {
+            background: linear-gradient(45deg, #ff00ff, #00ffff) !important;
+            color: #fff !important;
+            font-family: 'Comic Sans MS', cursive !important;
+            animation: spin 3s linear infinite;
+            border: 2px solid #000 !important;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        body.april .toggle-btn {
+            animation: spin 3s linear infinite;
+            background: linear-gradient(45deg, #ff00ff, #00ffff) !important;
+        }
+        
+        /* Курсоры-эмодзи */
+        body.april * {
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"><text y="26" font-size="26">🌈</text></svg>'), auto !important;
+        }
+        
+        body.april button, body.april a {
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"><text y="26" font-size="26">🎉</text></svg>'), pointer !important;
+        }
+        
+        /* Летающие эмодзи */
+        body.april::before {
+            content: '🌈 🎉 🎈 🎁 🎂 🍰 🧁 🎊 🎉 🌈';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            font-size: 40px;
+            animation: floatEmoji 10s linear infinite;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.3;
+        }
+        
+        @keyframes floatEmoji {
+            0% { transform: translateY(100vh) rotate(0deg); }
+            100% { transform: translateY(-100vh) rotate(360deg); }
+        }
+        
+        /* Уведомление */
+        .april-banner {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(45deg, #ff00ff, #00ffff);
+            color: white;
+            padding: 30px 50px;
+            border-radius: 20px;
+            font-family: 'Comic Sans MS', cursive;
+            font-size: 24px;
+            text-align: center;
+            z-index: 99999;
+            box-shadow: 0 0 50px rgba(255, 0, 255, 0.8);
+            animation: pulse 1s infinite;
+            border: 5px solid white;
+            cursor: pointer;
+        }
+        
+        .april-banner small {
+            font-size: 14px;
+            display: block;
+            margin-top: 10px;
+        }
+        
+        /* Капча */
+        .captcha {
+            background: #eee;
+            padding: 8px 14px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-weight: bold;
+            color: #800;
+            display: inline-block;
+            transition: all 0.5s;
+        }
+        
+        body.april .captcha {
+            background: linear-gradient(45deg, #ff00ff, #00ffff) !important;
+            color: #fff !important;
+            animation: glitchCaptcha 0.3s infinite;
+        }
+        
+        @keyframes glitchCaptcha {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">🎉 9CHAN ДЕМО 🎉</div>
+        
+        <div class="content">
+            <div class="thread">
+                <div class="thread-title">📌 Добро пожаловать на 9chan!</div>
+                <div class="thread-info">№1 Admin • Сегодня</div>
+                <div class="thread-text">Это демонстрация рофл-стиля 1 апреля.</div>
+                <button>💬 Ответить</button>
+            </div>
+            
+            <div class="thread">
+                <div class="thread-title">Тестовый тред</div>
+                <div class="thread-info">№2 Аноним • Сегодня</div>
+                <div class="thread-text">Как тебе стиль? 🎉</div>
+                <button>💬 Ответить</button>
+            </div>
+            
+            <div style="margin-top: 20px;">
+                <span class="captcha">7 + 3 = ?</span>
+                <input type="text" placeholder="Ответ" style="padding: 6px; width: 80px; border: 1px solid #d9bfb7; border-radius: 4px;">
+            </div>
+        </div>
+        
+        <div class="controls">
+            <button class="toggle-btn" id="toggleBtn">🎉 ВКЛЮЧИТЬ 1 АПРЕЛЯ 🎉</button>
+        </div>
+    </div>
+
+    <script>
+        const toggleBtn = document.getElementById('toggleBtn');
+        let aprilMode = false;
+        
+        toggleBtn.onclick = () => {
+            aprilMode = !aprilMode;
+            
+            if (aprilMode) {
+                document.body.classList.add('april');
+                toggleBtn.textContent = '🔙 ВЕРНУТЬ ОБЫЧНЫЙ СТИЛЬ';
+                document.title = '🎉 1 АПРЕЛЯ! 🎉 9chan';
+                
+                // Показываем баннер
+                setTimeout(() => {
+                    const banner = document.createElement('div');
+                    banner.className = 'april-banner';
+                    banner.innerHTML = '🎉 С 1 АПРЕЛЯ! 🎉<small>Нажми чтобы закрыть</small>';
+                    banner.onclick = () => banner.remove();
+                    document.body.appendChild(banner);
+                    setTimeout(() => {
+                        if (banner.parentNode) banner.remove();
+                    }, 5000);
+                }, 500);
+            } else {
+                document.body.classList.remove('april');
+                toggleBtn.textContent = '🎉 ВКЛЮЧИТЬ 1 АПРЕЛЯ 🎉';
+                document.title = '🎉 1 АПРЕЛЯ ДЕМО 🎉';
+                
+                // Удаляем баннер если есть
+                const banner = document.querySelector('.april-banner');
+                if (banner) banner.remove();
+            }
+        };
+    </script>
+</body>
+</html>
