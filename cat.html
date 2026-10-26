@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Каталог - 9chan</title>
+    <link rel="icon" href="../icon.png" type="image/png">
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/base-phone.css">
+    <style>
+        .catalog-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+        
+        .catalog-header {
+            background: #af0a0a;
+            padding: 8px 15px;
+            border-bottom: 2px solid #800;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .catalog-title {
+            font-size: 1.8rem;
+            color: #fff;
+            font-weight: bold;
+        }
+        
+        .catalog-sub {
+            color: #ffd700;
+            font-size: 12px;
+        }
+        
+        .board-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .board-card {
+            background: #faf0e6;
+            border: 1px solid #d9bfb7;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .board-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .board-header {
+            background: #af0a0a;
+            color: white;
+            padding: 12px 15px;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .board-description {
+            padding: 15px;
+            color: #333;
+            font-size: 13px;
+            line-height: 1.5;
+            min-height: 80px;
+        }
+        
+        .board-stats {
+            padding: 10px 15px;
+            background: #f0f0f0;
+            border-top: 1px solid #d9bfb7;
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            color: #666;
+        }
+        
+        .board-link {
+            display: inline-block;
+            margin-top: 10px;
+            color: #af0a0a;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .board-link:hover {
+            text-decoration: underline;
+        }
+        
+        .recent-threads {
+            margin-top: 30px;
+            background: #fff;
+            border: 1px solid #d9bfb7;
+            padding: 15px;
+        }
+        
+        .recent-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #800;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #d4af37;
+        }
+        
+        .thread-preview {
+            display: flex;
+            gap: 15px;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .thread-preview:hover {
+            background: #f9f9f9;
+        }
+        
+        .thread-preview-image {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border: 1px solid #d9bfb7;
+        }
+        
+        .thread-preview-info {
+            flex: 1;
+        }
+        
+        .thread-preview-title {
+            font-weight: bold;
+            color: #800;
+        }
+        
+        .thread-preview-board {
+            font-size: 10px;
+            color: #789922;
+            margin-top: 5px;
+        }
+        
+        .thread-preview-comment {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .no-threads {
+            text-align: center;
+            padding: 40px;
+            color: #999;
+        }
+        
+        @media (max-width: 768px) {
+            .board-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="board-header">
+            <div class="logo-area">
+                <img src="../icon.png" alt="9chan" class="hitme-icon" onerror="this.src='../hitme.png'">
+                <h1>Каталог досок</h1>
+                <div class="mascot-placeholder">
+                    <img src="icon.png" alt="mascot" style="width:48px;height:48px;object-fit:contain;border-radius:50%;" onerror="this.src='../hitme.png'">
+                </div>
+            </div>
+            <div class="header-links">
+                <a href="index.html">Главная</a>
+                <a href="board/b.html">/b/</a>
+                <a href="board/g.html">/g/</a>
+                <a href="board/a.html">/a/</a>
+                <a href="board/pol.html">/pol/</a>
+                <a href="board/d.html">/d/</a>
+                <a href="board/k.html">/k/</a>
+                <a href="board/c.html">/c/</a>
+                <a href="rules.html">Правила</a>
+                <a href="help.html">Помощь</a>
+            </div>
+        </header>
+
+        <div class="catalog-container">
+            <div class="catalog-header">
+                <span class="catalog-title">📋 КАТАЛОГ ДОСОК</span>
+                <span class="catalog-sub">все доски 9chan в одном месте</span>
+            </div>
+
+            <div class="board-grid">
+                <!-- /b/ -->
+                <div class="board-card">
+                    <div class="board-header">/b/ - Разное</div>
+                    <div class="board-description">
+                        Главная доска для всего подряд. Мемы, обсуждения, срач, треш и угар. 
+                        Здесь нет ограничений по темам.
+                    </div>
+                    <div class="board-stats">
+                        <span>🔥 Тредов: <span id="bCount">загрузка...</span></span>
+                        <a href="b.html" class="board-link">Перейти →</a>
+                    </div>
+                </div>
+
+                <!-- /g/ -->
+                <div class="board-card">
+                    <div class="board-header">/g/ - Технологии</div>
+                    <div class="board-description">
+                        Технологии, программирование, железо, софт, Linux vs Windows, 
+                        обсуждение гаджетов и IT-новости.
+                    </div>
+                    <div class="board-stats">
+                        <span>🔥 Тредов: <span id="gCount">загрузка...</span></span>
+                        <a href="g.html" class="board-link">Перейти →</a>
+                    </div>
+                </div>
+
+                <!-- /a/ -->
+                <div class="board-card">
+                    <div class="board-header">/a/ - Аниме и манга</div>
+                    <div class="board-description">
+                        Аниме, манга, ранобэ, вейфу, хаски, обсуждение сезонов, 
+                        рекомендации и мемы из мира аниме.
+                    </div>
+                    <div class="board-stats">
+                        <span>🔥 Тредов: <span id="aCount">загрузка...</span></span>
+                        <a href="a.html" class="board-link">Перейти →</a>
+                    </div>
+                </div>
+
+                <!-- /pol/ -->
+                <div class="board-card">
+                    <div class="board-header">/pol/ - Политика</div>
+                    <div class="board-description">
+                        Политические дискуссии, новости, аналитика, 
+                        обсуждение мировых событий и текущей повестки.
+                    </div>
+                    <div class="board-stats">
+                        <span>🔥 Тредов: <span id="polCount">загрузка...</span></span>
+                        <a href="pol.html" class="board-link">Перейти →</a>
+                    </div>
+                </div>
+
+                <!-- /d/ -->
+                <div class="board-card">
+                    <div class="board-header">/d/ - Изображения</div>
+                    <div class="board-description">
+                        Картинки, обои, арты, фотографии, креатив, 
+                        художественные работы и просто красивые изображения.
+                    </div>
+                    <div class="board-stats">
+                        <span>🔥 Тредов: <span id="dCount">загрузка...</span></span>
+                        <a href="d.html" class="board-link">Перейти →</a>
+                    </div>
+                </div>
+
+                <!-- /k/ -->
+                <div class="board-card">
+                    <div class="board-header">/k/ - Оружие</div>
+                    <div class="board-description">
+                        Огнестрельное и холодное оружие, военная техника, 
+                        стрельбища, тактика и история вооружений.
+                    </div>
+                    <div class="board-stats">
+                        <span>🔥 Тредов: <span id="kCount">загрузка...</span></span>
+                        <a href="k.html" class="board-link">Перейти →</a>
+                    </div>
+                </div>
+
+                <!-- /c/ -->
+                <div class="board-card">
+                    <div class="board-header">/c/ - Creepypasta</div>
+                    <div class="board-description">
+                        Страшные истории, крипипасты, мистика, ужасы, 
+                        паранормальное и всё, что вызывает мурашки.
+                    </div>
+                    <div class="board-stats">
+                        <span>🔥 Тредов: <span id="cCount">загрузка...</span></span>
+                        <a href="c.html" class="board-link">Перейти →</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Свежие треды -->
+            <div class="recent-threads">
+                <div class="recent-title">📌 Свежие треды со всех досок</div>
+                <div id="recentThreadsContainer">
+                    <div class="no-threads">Загрузка последних тредов...</div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="board-footer">
+            <div class="footer-content">
+                <span>© 9chan — свобода слова, чёрный юмор, немецкое качество</span>
+                <img src="icon.png" alt="footer-icon" class="footer-icon" onerror="this.src='hitme.png'">
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const API_URL = 'https://script.google.com/macros/s/AKfycbxwH31mrpRnc8fISbJjx9ofaueHKkTcjBqTce_w3xh2tsaw5p633DXY9N6tPrgjwE4H/exec';
+        
+        async function loadAllThreads() {
+            try {
+                const res = await fetch(`${API_URL}`);
+                const allThreads = await res.json();
+                
+                // Считаем треды по доскам
+                const boards = ['b', 'g', 'a', 'pol', 'd', 'k', 'c'];
+                boards.forEach(board => {
+                    const count = allThreads.filter(t => t.board === board).length;
+                    const el = document.getElementById(`${board}Count`);
+                    if(el) el.textContent = count;
+                });
+                
+                // Последние 10 тредов
+                const recent = [...allThreads]
+                    .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
+                    .slice(0, 10);
+                
+                const container = document.getElementById('recentThreadsContainer');
+                if(recent.length === 0) {
+                    container.innerHTML = '<div class="no-threads">Нет тредов. Будьте первыми!</div>';
+                    return;
+                }
+                
+                let html = '';
+                for(let t of recent) {
+                    let boardName = '';
+                    switch(t.board) {
+                        case 'b': boardName = '/b/ - Разное'; break;
+                        case 'g': boardName = '/g/ - Технологии'; break;
+                        case 'a': boardName = '/a/ - Аниме'; break;
+                        case 'pol': boardName = '/pol/ - Политика'; break;
+                        case 'd': boardName = '/d/ - Изображения'; break;
+                        case 'k': boardName = '/k/ - Оружие'; break;
+                        case 'c': boardName = '/c/ - Creepypasta'; break;
+                        default: boardName = `/${t.board}/`;
+                    }
+                    
+                    let dateStr = 'Дата неизвестна';
+                    try {
+                        if(t.timestamp) dateStr = new Date(t.timestamp).toLocaleString();
+                    } catch(e) {}
+                    
+                    let shortComment = t.comment.length > 100 ? t.comment.substring(0, 100) + '...' : t.comment;
+                    
+                    html += `<div class="thread-preview">
+                        ${t.fileData ? `<img class="thread-preview-image" src="${t.fileData}" onerror="this.style.display='none'">` : '<div style="width:60px;"></div>'}
+                        <div class="thread-preview-info">
+                            <div class="thread-preview-title">${escape(t.subject || 'Без темы')}</div>
+                            <div class="thread-preview-board">📌 ${boardName} | №${t.id} | ${dateStr}</div>
+                            <div class="thread-preview-comment">${escape(shortComment)}</div>
+                            <a href="${t.board}.html" style="font-size:11px; color:#800;">→ Перейти в тред</a>
+                        </div>
+                    </div>`;
+                }
+                container.innerHTML = html;
+            } catch(e) {
+                console.error('Error loading catalog:', e);
+                document.getElementById('recentThreadsContainer').innerHTML = '<div class="no-threads">Ошибка загрузки тредов</div>';
+                ['b','g','a','pol','d','k','c'].forEach(board => {
+                    const el = document.getElementById(`${board}Count`);
+                    if(el) el.textContent = 'ошибка';
+                });
+            }
+        }
+        
+        function escape(s) {
+            if(!s) return '';
+            return s.replace(/[&<>]/g, m => m === '&' ? '&amp;' : m === '<' ? '&lt;' : '&gt;');
+        }
+        
+        loadAllThreads();
+        setInterval(loadAllThreads, 30000);
+    </script>
+</body>
+</html>

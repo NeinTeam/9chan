@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>9chan - Помощь</title>
+    <link rel="icon" href="icon.png" type="image/png">
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/base-phone.css">
+    <style>
+        /* Убрали фон, рамку и отступы "черной штуки" */
+        .rules {
+            padding: 20px;
+            color: black; /* Цвет текста, чтобы он был виден на темном фоне сайта */
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        
+        .rules h3 {
+            color: #d4af37;
+            text-align: center;
+            font-size: 1.8rem;
+        }
+
+        .rules ol li {
+            margin-bottom: 10px;
+        }
+
+        .main-container {
+            text-align: center;
+            padding-top: 20px;
+        }
+
+        .error-image {
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="board-header">
+            <div class="logo-area">
+                <img src="icon.png" alt="9chan" class="hitme-icon" onerror="this.src='hitme.png'">
+                <h1>9chan</h1>
+                <div class="mascot-placeholder">
+                    <img src="icon.png" alt="mascot" style="width:48px;height:48px;object-fit:contain;border-radius:50%;" onerror="this.src='hitme.png'">
+                </div>
+            </div>
+            <div class="header-links">
+                <a href="index.html">Главная</a>
+                <a href="cat.html">Каталог</a>
+                <a href="rules.html">Правила</a>
+                <a href="help.html">Помощь</a>
+            </div>
+            <div class="banner-deutsch">
+                <span>🇩🇪 Einheit, Recht, Freiheit 🇩🇪</span>
+            </div>
+        </header>
+
+        <div class="main-container">
+            <div class="rules">
+                <h3>📜 Правила 9chan</h3>
+                <ol>
+                    <li>Не постите не связанные с разделом вещи.<br>
+                        Соблюдайте тематику доски (например, в /g/ — технологии, в /a/ — аниме и манга). Офтоп будет удалён.</li>
+                    <li>Будьте уважительны к другим анонам. Без хамства и троллинга.</li>
+                    <li>Жалобы и предложения — только на GitHub: <br>
+                        <a href="https://github.com/rasko6/9chan/issues" target="_blank">9chan Issues</a></li>
+                    <li>Запрещены:
+                        <ul>
+                            <li>Спам, флуд, двойные посты.</li>
+                            <li>Доксинг (публикация чужих личных данных).</li>
+                            <li>Противоправный контент.</li>
+                        </ul>
+                    </li>
+                    <li>Администрация оставляет за собой право удалять посты.</li>
+                    <li>Капча обязательна для всех постов.</li>
+                </ol>
+            </div>
+
+            <img src="not_found.png" alt="cry about it" class="error-image">
+        </div>
+
+        <footer class="board-footer">
+            <div class="footer-content">
+                <span>© 9chan — свобода слова, чёрный юмор, немецкое качество</span>
+                <img src="icon.png" alt="footer-icon" class="footer-icon" onerror="this.src='hitme.png'">
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

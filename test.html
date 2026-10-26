@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>9chan - test</title>
+    <link rel="icon" href="icon.png" type="image/png">
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/base-phone.css">
+    <style>
+        .body {
+           background: #ffff00;
+        }
+        .boards-catalog {
+            padding: 30px 20px;
+            background: #0a0a0a;
+            margin: 20px;
+            border-radius: 20px;
+            border: 1px solid #d4af37;
+        }
+        .boards-catalog h2 {
+            color: #d4af37;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+        }
+        .boards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+        }
+        .board-card {
+            background: #1a1a1a;
+            border: 1px solid #3a3a3a;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.2s;
+            display: block;
+        }
+        .board-card:hover {
+            border-color: #d4af37;
+            transform: translateY(-3px);
+            background: #252525;
+        }
+        .board-name {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #d4af37;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .board-desc {
+            font-size: 0.8rem;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="board-header">
+            <div class="logo-area">
+                <img src="icon.png" alt="9chan" class="hitme-icon" onerror="this.src='hitme.png'">
+                <h1>9chan</h1>
+                <div class="mascot-placeholder">
+                    <img src="icon.png" alt="mascot" style="width:48px;height:48px;object-fit:contain;border-radius:50%;" onerror="this.src='hitme.png'">
+                </div>
+            </div>
+            <div class="header-links">
+                <a href="index.html">Главная</a>
+                <a href="#">Каталог</a>
+                <a href="rules.html">Правила</a>
+                <a href="help.html">Помощь</a>
+            </div>
+            <div class="banner-deutsch">
+                <span>🇩🇪 Einheit, Recht, Freiheit 🇩🇪</span>
+            </div>
+        </header>
+      <center>
+        <h2>
+            Test page
+        </h2>
+        <img src="not_found.png" alt="cry about it">
+      </center>
+
+        <footer class="board-footer">
+            <div class="footer-content">
+                <span>© 9chan — свобода слова, чёрный юмор, немецкое качество</span>
+                <img src="icon.png" alt="footer-icon" class="footer-icon" onerror="this.src='hitme.png'">
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

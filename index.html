@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>9chan - Доски</title>
+    <link rel="icon" href="icon.png" type="image/png">
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/base-phone.css">
+    <style>
+        .boards-catalog {
+            padding: 20px;
+            background: #faf0e6;
+            margin: 15px;
+            border-radius: 0;
+            border: 1px solid #d9bfb7;
+        }
+        .boards-catalog h2 {
+            color: #af0a0a;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            font-weight: normal;
+        }
+        .boards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 12px;
+        }
+        .board-card {
+            background: #fff;
+            border: 1px solid #d9bfb7;
+            border-radius: 0;
+            padding: 12px;
+            text-align: center;
+            text-decoration: none;
+            transition: none;
+            display: block;
+        }
+        .board-card:hover {
+            border-color: #af0a0a;
+            background: #f0f0f0;
+            transform: none;
+        }
+        .board-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #00e;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .board-name:hover {
+            color: #f00;
+        }
+        .board-desc {
+            font-size: 0.7rem;
+            color: #789922;
+        }
+.welcome-section {
+    padding: 20px;
+    background: #faf0e6; /* Твой цвет фона */
+    margin: 15px;
+    border: 1px solid #d9bfb7; /* Твоя рамка */
+    text-align: center;
+}
+        a {
+  cursor: url('selection.png'), auto;
+}
+.welcome-text {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: #111;
+    max-width: 900px;
+    margin: 0 auto;
+    font-family: sans-serif;
+}
+        .welcome-box {
+    background: #faf0e6; /* Чуть темнее основного фона для акцента */
+    border: 1px solid #d9bfb7;
+    margin: 15px;
+    padding: 20px;
+    text-align: center;
+}
+
+.welcome-box h2 {
+    color: #af0a0a;
+    font-size: 1.5rem;
+    font-weight: normal;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.welcome-box p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    max-width: 800px;
+    margin: 0 auto;
+    color: #111;
+}
+
+body{cursor: url('main.png'), auto;}
+.special-button {cursor: url('selection.png'), pointer;}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="board-header">
+            <div class="logo-area">
+                <img src="icon.png" alt="9chan" class="hitme-icon" onerror="this.src='hitme.png'">
+                <h1>9chan</h1>
+            </div>
+            <div class="header-links">
+                <a href="index.html">Главная</a>
+                <a href="cat.html">Каталог</a>
+                <a href="rules.html">Правила</a>
+                <a href="help.html">Помощь</a>
+            </div>
+            <div class="banner-deutsch">
+                <span>🇩🇪 Einheit, Recht, Freiheit 🇩🇪</span>
+            </div>
+        </header>
+        <center>
+            <br>
+        <img src="9ccccc.png" align: center;>
+        </center>
+<div style="background: #f0e0d6; border: 1px solid #d9bfb7; margin: 15px; padding: 25px; text-align: center;">
+    
+    <h2 style="color: #af0a0a; margin: 0 0 15px 0; font-size: 1.5rem; font-weight: normal;">
+        Добро пожаловать на 9chan
+    </h2>
+    <p style="max-width: 800px; margin: 0 auto; font-size: 0.9rem; line-height: 1.6; color: #111;">
+        9chan — это независимая площадка для свободного общения, где ценятся ирония, 
+        немецкая культура и старые традиции анонимности. Здесь нет регистрации и лишних
+        ограничений. Мы создали это место для тех, кто скучает по классическим бордам: 
+        минимум дизайна, максимум содержания. ПРИВЕТ
+    </p>
+</div>
+        <div class="boards-catalog">
+            <h2>📌 Выберите доску</h2>
+            <div class="boards-grid" id="boardsGrid"></div>
+        </div>
+
+        <footer class="board-footer">
+            <div class="footer-content">
+                <span>© 9chan — свобода слова, чёрный юмор, немецкое качество</span>
+                <img src="icon.png" alt="footer-icon" class="footer-icon" onerror="this.src='hitme.png'">
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const boards = [
+            { name: 'b', desc: 'Разное', color: '#d4af37' },
+            { name: 'g', desc: 'Технологии & программирование', color: '#4caf50' },
+            { name: 'a', desc: 'Аниме & манга', color: '#ff69b4' },
+            { name: 'pol', desc: 'Политика', color: '#ff4444' },
+            { name: 'd', desc: 'Изображения', color: '#2196f3' },
+            { name: 'k', desc: 'Оружие', color: '#795548' }
+        ];
+
+        const grid = document.getElementById('boardsGrid');
+        if (grid) {
+            grid.innerHTML = boards.map(b => `
+                <a href="board/${b.name}.html" class="board-card">
+                    <span class="board-name">/${b.name}/</span>
+                    <span class="board-desc">${b.desc}</span>
+                </a>
+            `).join('');
+        }
+    </script>
+</body>
+</html>
